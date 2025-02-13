@@ -47,7 +47,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-sm-12 col-md-12"> <!-- Giới hạn chiều rộng -->
+            <div class="col-sm-12 col-md-12">
                 <form>
                     <div class="form-group">
                         <label for="TagBox">Nhập tag muốn thêm vào:</label>
@@ -57,7 +57,7 @@
                         <label for="ExcludedTagBox">Nhập tag muốn loại ra:</label>
                         <input type="text" class="form-control" id="ExcludedTagBox" placeholder="Nhập những tag mà bạn muốn chúng xuất hiện trong bài. Cú pháp tương tự như trên.">
                     </div>
-                    <div class="text-center"> <!-- Căn giữa button -->
+                    <div class="text-center"> 
                         <button type="button" class="btn btn-primary" onclick="GetListByTagButCrom()">Lấy Danh Sách</button>
                     </div>
                 </form>
