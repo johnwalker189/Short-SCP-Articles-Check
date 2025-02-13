@@ -14,8 +14,8 @@ async function GetListByTagButCrom() {
     let ExcludedFilterConditions = ExcludedTagArray.length 
         ? ExcludedTagArray.map(tag => `{_not: {wikidotInfo: {tags: {eq: \"${tag}\"}}}}`).join(", ")
         : "";
-    console.log("Tags:", TagArray);
-    console.log("Excluded Tags:", ExcludedTagArray);
+    /*console.log("Tags:", TagArray);
+    console.log("Excluded Tags:", ExcludedTagArray);*/
     let hasNextPage = true;
     let afterCursor = null;
 
@@ -54,7 +54,7 @@ async function GetListByTagButCrom() {
             }
         }`;
 
-        console.log("GraphQL Query:", query);
+        //console.log("GraphQL Query:", query);
 
         let variables = {};
         if (afterCursor) {
@@ -69,7 +69,7 @@ async function GetListByTagButCrom() {
             });
 
             const data = await response.json();
-            console.log("API Response:", data);
+            //console.log("API Response:", data);
 
             if (data.errors) {
                 console.error("GraphQL Errors:", data.errors);
@@ -83,8 +83,8 @@ async function GetListByTagButCrom() {
             
                 let hasScpVn = translations.some(translation => translation.url.includes("scp-vn"));
                 if (!hasScpVn) {
-                    console.log("Source:", pageUrl);
-                    console.log(edge.node.wikidotInfo.textContent);
+                    /*console.log("Source:", pageUrl);
+                    console.log(edge.node.wikidotInfo.textContent);*/
                     let WordsCount = countWords(edge.node.wikidotInfo.textContent);
                     let title = edge.node.wikidotInfo.title;
                     ArticleArray.push({ link: pageUrl, rating: rating, WordsCount: WordsCount, title: title });
@@ -108,7 +108,7 @@ async function GetListByTagButCrom() {
         return b.rating - a.rating;
     });
 
-    console.log("Final Sorted ArticleArray:", ArticleArray);
+    /*console.log("Final Sorted ArticleArray:", ArticleArray);*/
 
     let tableHtml = `
     <div class="table-responsive">
@@ -147,25 +147,3 @@ function countWords(text) {
     let words = cleanedText.trim().split(/\s+/);
     return words.length;
 }
-
-/*
-function cleanWikidotSource(source) {
-    if (!source) return "";
-
-    // Loại bỏ các thẻ Wikidot nhưng giữ lại nội dung bên trong
-    source = source.replace(/\[\[\/?[^|\]]+\|?([^\]]*)\]\]/g, "$1");
-
-    // Loại bỏ bình luận dạng Wikidot <!-- --> 
-    source = source.replace(/\[\!--[\s\S]*?--\]/g, "");
-
-    // Loại bỏ dấu `||` của bảng nhưng giữ lại nội dung
-    source = source.replace(/\|\|~? ?(.*?) ?\|\|/g, "$1");
-
-    // Xóa khoảng trắng dư thừa (bao gồm dòng trống)
-    source = source.replace(/\s{2,}/g, " ").trim();
-    source = source.replace(/\n\s*\n/g, "\n"); // Xóa dòng trống thừa
-
-    console.log(source);
-    return source;
-}
-*/
