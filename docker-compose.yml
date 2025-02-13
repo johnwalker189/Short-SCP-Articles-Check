@@ -1,0 +1,9 @@
+version: '3.8' # specify docker-compose version
+services:
+  www:
+    image: php:7.4-apache
+    restart: unless-stopped
+    ports:
+      - "5555:80"
+    volumes:
+      - ./src:/var/www/html
