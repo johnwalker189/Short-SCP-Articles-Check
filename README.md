@@ -1,2 +1,2 @@
 # Untranslated Articles List Maker
-I literally don't know how to build this, but the idea is that this thing will check for the shortest articles of a particular tag in the SCP Wiki NOT TRANSLATED into Vietnamese yet.
+Visit this website to use the tool: [List Maker Website](https://short-scp-articles-check-production.up.railway.app/)
